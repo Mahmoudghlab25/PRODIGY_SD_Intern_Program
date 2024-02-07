@@ -23,8 +23,7 @@ public class HowToPlayController {
     @FXML
     private VBox centeredVBox;
 
-    @FXML
-    protected void initialize() {
+    public void initialize() {
         double xOffset = (anchorPane.getWidth() - centeredVBox.getWidth()) / 2;
         double yOffset = (anchorPane.getHeight() - centeredVBox.getHeight()) / 2;
         centeredVBox.setLayoutX(xOffset);
@@ -33,7 +32,6 @@ public class HowToPlayController {
     }
 
     private void howToPlay(){
-
         label.setText("""
                 This is a "Guessing The Number" game. The game generates a random number between 1 and 100, and you are asked to guess that number.
                 You first enter a number between 1 and 100 in the text field and click on the "Guess button."

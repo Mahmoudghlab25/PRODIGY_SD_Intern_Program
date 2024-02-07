@@ -1,5 +1,6 @@
 package com.example.guessinggame;
 
+import javafx.animation.PauseTransition;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -9,6 +10,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+import javafx.util.Duration;
 
 import java.util.Random;
 
@@ -98,16 +100,26 @@ public class StartGameController {
         Platform.exit();
         System.exit(0);
     }
-
+    public void setLabelTextAndClearWithDelay(String text, Duration displayDuration) {
+        label.setText(text);
+        label.setTextFill(Color.WHITE);
+        // Use PauseTransition to introduce a delay
+        PauseTransition pauseTransition = new PauseTransition(displayDuration);
+        pauseTransition.setOnFinished(event -> {
+            label.setText(""); // Clear the label text after the display duration
+        });
+        pauseTransition.play();
+    }
     private void startNewGame() {
         Random random = new Random();
         number = random.nextInt(1, 100);
-        System.out.println(number);
         steps = 0;
         textField.clear();
-        label.setText("");
+        setLabelTextAndClearWithDelay("New Game started!",Duration.seconds(0.5));
+
         guessButt.setDisable(false);
     }
+
 
     private void showAlert(String message) {
         Alert alert = new Alert(Alert.AlertType.WARNING);
