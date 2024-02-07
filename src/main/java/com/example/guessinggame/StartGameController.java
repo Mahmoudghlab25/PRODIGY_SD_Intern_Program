@@ -1,10 +1,13 @@
 package com.example.guessinggame;
 
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 
 import java.util.Random;
@@ -21,9 +24,19 @@ public class StartGameController {
     private Color color;
     private int number;
     private int steps;
-
     @FXML
-    public void initialize() {
+    private AnchorPane anchorPane;
+    @FXML
+    private VBox centeredVBox;
+
+    public void initScreen() {
+        double xOffset = (anchorPane.getWidth() - centeredVBox.getWidth()) / 2;
+        double yOffset = (anchorPane.getHeight() - centeredVBox.getHeight()) / 2;
+        centeredVBox.setLayoutX(xOffset);
+        centeredVBox.setLayoutY(yOffset);
+    }
+    @FXML
+    protected void initialize() {
         startNewGame();
     }
 
@@ -56,14 +69,14 @@ public class StartGameController {
         }
 
         if (!input.matches("\\d+")) {
-            showAlert("Please, Input a valid integer number between 1 and 1000!");
+            showAlert("Please, Input a valid integer number between 1 and 100!");
             label.setText("");
             return false;
         }
 
         int x = Integer.parseInt(input);
-        if (!(x >= 1 && x <= 1000)) {
-            showAlert("Please, Input a number between 1 and 1000!");
+        if (!(x >= 1 && x <= 100)) {
+            showAlert("Please, Input a number between 1 and 100!");
             label.setText("");
             return false;
         }
@@ -80,9 +93,15 @@ public class StartGameController {
         }
     }
 
+    @FXML
+    protected void Exit() {
+        Platform.exit();
+        System.exit(0);
+    }
+
     private void startNewGame() {
         Random random = new Random();
-        number = random.nextInt(1, 1000);
+        number = random.nextInt(1, 100);
         System.out.println(number);
         steps = 0;
         textField.clear();

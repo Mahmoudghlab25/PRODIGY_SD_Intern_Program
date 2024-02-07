@@ -1,3 +1,21 @@
-.root{
-    -fx-background-image:url("dice.png")
+.root {
+    -fx-background-image: url('guessBG.jpeg');
+    -fx-background-size: cover;
+    -fx-background-position: center;
+    -fx-background-repeat: no-repeat;
+
+}
+.button-main-menu {
+    -fx-background-color: #4CAF50;
+    -fx-text-fill: #fff;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-padding: 10px 20px;
+    -fx-border-radius: 5px;
+    -fx-cursor: hand;
+}
+
+
+.button-main-menu:hover {
+    -fx-background-color: #45a049;
 }

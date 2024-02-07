@@ -17,6 +17,8 @@ public class GuessApplication extends Application {
         stage.getIcons().add(new Image(GuessApplication.class.getResourceAsStream("dice.png")));
         stage.setScene(scene);
         stage.setResizable(false);
+        stage.setX(100);
+        stage.setY(100);
         stage.show();
     }
 

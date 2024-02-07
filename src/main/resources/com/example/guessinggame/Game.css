@@ -1,0 +1,32 @@
+.root {
+    -fx-background-image: url('guessBG.jpeg');
+    -fx-background-size: cover;
+    -fx-background-position: center;
+    -fx-background-repeat: no-repeat;
+
+}
+.button {
+    -fx-background-color: #4CAF50;
+    -fx-text-fill: #fff;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-padding: 10px 20px;
+    -fx-border-radius: 5px;
+    -fx-cursor: hand;
+}
+.button:hover {
+    -fx-background-color: #45a049;
+}
+
+
+.hint {
+    -fx-font-size: 16;
+    -fx-font-weight: bold;
+}
+
+.inTextField {
+    -fx-prompt-text-fill: derive(-fx-control-inner-background, -30%);
+    -fx-font-size: 14px;
+    -fx-padding: 10px 2px;
+    -fx-border-radius: 5px;
+}

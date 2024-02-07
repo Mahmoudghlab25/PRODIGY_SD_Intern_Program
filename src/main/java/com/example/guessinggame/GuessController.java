@@ -72,9 +72,13 @@ public class GuessController {
     protected void startGame(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("start-game-view.fxml"));
         root = loader.load();
+        StartGameController startGameController = loader.getController();
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
+        stage.setX(50);
+        stage.setY(50);
+        startGameController.initScreen();
         stage.show();
     }
 
@@ -82,14 +86,13 @@ public class GuessController {
     protected void howToPlay(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("how-to-play-view.fxml"));
         root = loader.load();
-        // Set any shared data or properties in newController if needed
         HowToPlayController howToPlayController = loader.getController();
-        howToPlayController.howToPlay();
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
-//        setBackGround();
         stage.setScene(scene);
-
+        stage.setX(50);
+        stage.setY(50);
+        howToPlayController.initialize();
         stage.show();
     }
 
