@@ -2,18 +2,17 @@ package com.example.prodigy_intern_program;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
-import javafx.scene.shape.Rectangle;
+import javafx.scene.layout.HBox;
 
-public class TemperatureConverterController {
+import java.util.Objects;
 
 
-    @FXML
-    private Rectangle rect;
-    @FXML
-    private Circle circle;
+public class TemperatureConverterController{
+
+
     @FXML
     private TextField textField;
     @FXML
@@ -22,53 +21,50 @@ public class TemperatureConverterController {
     private Label label1;
     @FXML
     private Label label2;
+
     @FXML
     private BorderPane borderPane;
+    @FXML
+    private ImageView img;
+    @FXML
+    private HBox hBox;
+    @FXML
+    private MenuItem cel;
     private char character;
 
     private boolean darkMode = false;
 
-    @FXML
-    private void handleToggleClick() {
-        toggleMode();
-    }
-
-
-
-    private void toggleMode() {
+    public void toggleMode() {
         darkMode = !darkMode;
 
         if (darkMode) {
             // Dark mode
-            rect.setFill(Color.LIGHTGREEN);
-            circle.setTranslateX(0); // Move the circle to the right
-            rect.setStroke(Color.DARKGRAY);
-            circle.setFill(Color.WHITE);
-            circle.setStroke(Color.DARKGRAY);
-            borderPane.getScene().getStylesheets().add("Style.css");
-            borderPane.getScene().getRoot().getStyleClass().add("dark-mode");
-            label1.getStyleClass().remove("light-mode");
-            label1.getStyleClass().add("dark-mode");
-            label2.getStyleClass().remove("light-mode");
-            label2.getStyleClass().add("dark-mode");
+            setDarkMode();
         } else {
             // Light mode
-            rect.setFill(Color.WHITE);
-            circle.setTranslateX(-25); // Reset the circle's position
-            rect.setStroke(Color.LIGHTGRAY);
-            circle.setFill(Color.WHITE);
-            circle.setStroke(Color.LIGHTGRAY);
-            borderPane.getScene().getStylesheets().remove("styles.css");
-            borderPane.getScene().getRoot().getStyleClass().remove("dark-mode");
-            label1.getStyleClass().remove("dark-mode");
-            label1.getStyleClass().add("light-mode");
-            label2.getStyleClass().remove("dark-mode");
-            label2.getStyleClass().add("light-mode");
+            setLightMode();
         }
     }
 
-    @FXML
-    protected boolean isValid(String input) {
+    private void setLightMode() {
+        borderPane.getStylesheets().remove(Objects.requireNonNull(TemperatureConverterController.class.getResource("/com/example/prodigy_intern_program/dark.css")).toExternalForm());
+        borderPane.getStylesheets().add(Objects.requireNonNull(TemperatureConverterController.class.getResource("/com/example/prodigy_intern_program/light.css")).toExternalForm());
+        hBox.getStylesheets().remove(Objects.requireNonNull(TemperatureConverterController.class.getResource("/com/example/prodigy_intern_program/dark.css")).toExternalForm());
+        hBox.getStylesheets().add(Objects.requireNonNull(TemperatureConverterController.class.getResource("/com/example/prodigy_intern_program/light.css")).toExternalForm());
+        Image image = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/com/example/prodigy_intern_program/dark.png")));
+        img.setImage(image);
+    }
+
+    private void setDarkMode() {
+        borderPane.getStylesheets().remove(Objects.requireNonNull(TemperatureConverterController.class.getResource("/com/example/prodigy_intern_program/light.css")).toExternalForm());
+        borderPane.getStylesheets().add(Objects.requireNonNull(TemperatureConverterController.class.getResource("/com/example/prodigy_intern_program/dark.css")).toExternalForm());
+        hBox.getStylesheets().remove(Objects.requireNonNull(TemperatureConverterController.class.getResource("/com/example/prodigy_intern_program/light.css")).toExternalForm());
+        hBox.getStylesheets().add(Objects.requireNonNull(TemperatureConverterController.class.getResource("/com/example/prodigy_intern_program/dark.css")).toExternalForm());
+        Image image = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/com/example/prodigy_intern_program/light.png")));
+        img.setImage(image);
+    }
+
+    private boolean isValid(String input) {
         if (input.isEmpty()) {
             showAlert("Cannot process an empty field");
             label1.setText("");
@@ -132,7 +128,6 @@ public class TemperatureConverterController {
                     break;
                 }
                 default: {
-                    //Alert: choose a unit please
                     label1.setText("");
                     label2.setText("");
                     showAlert("Choose a unit, please.");

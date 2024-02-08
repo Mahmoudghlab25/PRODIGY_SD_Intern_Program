@@ -1,50 +1,65 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
-
 <?import javafx.scene.control.TextField?>
-
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<?import javafx.scene.shape.Rectangle?>
-<?import javafx.scene.shape.Circle?>
-
-<BorderPane fx:id="borderPane" styleClass="root" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.prodigy_intern_program.TemperatureConverterController">
-    <top>
-        <StackPane alignment="TOP_RIGHT">
-            <Rectangle fx:id="rect" width="50" height="25" arcWidth="25" arcHeight="25" fill="WHITE" stroke="LIGHTGRAY" onMouseClicked="#handleToggleClick"/>
-            <Circle fx:id="circle" radius="12.5" centerX="12.5" centerY="12.5" fill="WHITE" stroke="LIGHTGRAY" translateX="-25" onMouseClicked="#handleToggleClick"/>
-        </StackPane>
-    </top>
-
+<BorderPane fx:id="borderPane" prefHeight="400.0" prefWidth="500.0" stylesheets="@light.css" styleClass="root" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.prodigy_intern_program.TemperatureConverterController">
     <center>
-        <VBox alignment="CENTER" spacing="20.0" translateY="50">
+        <VBox alignment="CENTER" spacing="20.0" translateY="50" >
             <padding>
                 <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
             </padding>
-
-
-            <HBox alignment="CENTER" spacing="10.0" >
-                <TextField fx:id="textField" prefWidth="200" promptText="Enter The Temperature Degree Here" />
-
-                <MenuButton fx:id="menuButton" text="Unit">
+            <HBox alignment="CENTER" spacing="10.0">
+                <TextField fx:id="textField" focusTraversable="false" prefWidth="210" promptText="Enter The Temperature Degree Here" style="-fx-prompt-text-fill: derive(-fx-control-inner-background, -30%);" />
+                <MenuButton fx:id="menuButton" styleClass="units" text="Unit">
                     <items>
-                        <MenuItem onAction="#onCelsiusItemSelect" text="Celsius" />
-                        <MenuItem onAction="#onKelvinItemSelect" text="Kelvin" />
-                        <MenuItem onAction="#onFahrenheitItemSelect" text="Fahrenheit" />
+                        <MenuItem onAction="#onCelsiusItemSelect" text="Celsius" style="-fx-text-fill: #000;"/>
+                        <MenuItem onAction="#onKelvinItemSelect" text="Kelvin" style="-fx-text-fill: #000;"/>
+                        <MenuItem onAction="#onFahrenheitItemSelect" text="Fahrenheit" style="-fx-text-fill: #000;"/>
                     </items>
                 </MenuButton>
             </HBox>
-            <Button onAction="#onConvertButtonSelect" text="Convert" />
-            <Label fx:id="label1" style="-fx-font-weight: bold;" />
-            <Label fx:id="label2" style="-fx-font-weight: bold;" />
+            <Button onAction="#onConvertButtonSelect" styleClass="convert" text="Convert" />
+            <Label fx:id="label1" style="-fx-font-weight: bold; -fx-font-size: 14px;" />
+            <Label fx:id="label2" style="-fx-font-weight: bold; -fx-font-size: 14px;" />
         </VBox>
     </center>
+   <top>
+       <HBox fx:id="hBox" alignment="CENTER" prefHeight="50.0" prefWidth="50.0" styleClass="secondary-color"
+             stylesheets="@light.css" BorderPane.alignment="CENTER">
+           <padding>
+               <Insets left="20.0" right="20.0"/>
+           </padding>
+           <Label prefHeight="35.0" prefWidth="291.0" text="Welcome To Temp Converter App">
+              <font>
+                  <Font name="System Bold" size="16.0"/>
+              </font>
+           </Label>
+           <Pane prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS"/>
+           <Button alignment="CENTER" mnemonicParsing="false" onAction="#toggleMode" prefHeight="30.0"
+                   prefWidth="30.0" style="-fx-cursor: hand;">
+              <graphic>
+                  <ImageView fx:id="img" fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                      <Image url="@dark.png"/>
+                  </ImageView>
+              </graphic>
+              <styleClass>
+                  <String fx:value="primary-color"/>
+                  <String fx:value="round-border"/>
+              </styleClass>
+           </Button>
+       </HBox>
+   </top>
 </BorderPane>

@@ -1,0 +1,41 @@
+.root {
+    -fx-background-color: #FFFFFF;
+    -fx-text-fill: #000000;
+}
+.label{
+    -fx-text-fill: #000000;
+}
+.menu-item{
+    -fx-cursor: hand;
+}
+.primary-color{
+    -fx-background-color: #FFFFFF;
+}
+.secondary-color{
+    -fx-background-color:#E7E7E7;
+}
+.round-border{
+    -fx-background-radius: 50;
+}
+.convert {
+    -fx-background-color: #4CAF50;
+    -fx-text-fill: #000;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-padding: 10px 20px;
+    -fx-border-radius: 5px;
+    -fx-cursor: hand;
+}
+
+.convert:hover {
+    -fx-background-color: #45a049;
+}
+.units {
+    -fx-background-color: #4CAF50;
+    -fx-text-fill: #000;
+    -fx-cursor: hand;
+}
+
+.units:hover {
+    -fx-background-color: #45a049;
+}
