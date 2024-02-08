@@ -7,3 +7,7 @@
     <li>Click convert to convert the tempreature degree to the other 2 units (eg. if he chooses celsius and click convert the tempreature degree of the other 2 units(kelvin and fahrenheit) are calculated and displayed to him)</li>
   </ul>
 </h4>
+<h2>
+  How to use it:
+    https://drive.google.com/file/d/1P2-hDu5qAcS3ey9rJVzHkfV7hhMNpaea/view?usp=sharing
+</h2>
